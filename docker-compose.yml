@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  db:
+    image: mariadb:11.1
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb-data-volume:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    restart: always
+
+  migration:
+    image: flyway/flyway:10.0
+    command: -url=jdbc:mariadb://db:3306/${DB_DATABASE} -user=${DB_USER} -password=${DB_PASSWORD} -connectRetries=120 migrate
+    volumes:
+      - ./db/migration:/flyway/sql
+    depends_on:
+      - db
+
+  app:
+    image: oven/bun:1.0
+    working_dir: /app
+    command: sh -c "bun install --no-save && bun run dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+    environment:
+      - DB_HOST=db
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  mariadb-data-volume:
