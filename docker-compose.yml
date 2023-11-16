@@ -24,9 +24,9 @@ services:
       - db
 
   app:
-    image: oven/bun:1.0
+    image: node:21
     working_dir: /app
-    command: sh -c "bun install --no-save && bun run dev"
+    command: sh -c "npm install --legacy-peer-deps && npm run dev"
     ports:
       - "3000:3000"
     volumes:

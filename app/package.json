@@ -4,10 +4,16 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --host 0.0.0.0",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "nuxt": "^3.8.1",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
   },
   "dependencies": {
     "@trpc/client": "^10.43.3",
@@ -16,11 +22,5 @@
     "bootstrap-icons": "^1.11.1",
     "trpc-nuxt": "^0.10.12",
     "zod": "^3.22.4"
-  },
-  "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "nuxt": "^3.8.1",
-    "vue": "^3.3.8",
-    "vue-router": "^4.2.5"
   }
 }

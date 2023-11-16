@@ -8,7 +8,7 @@ Nuxt와 tRPC를 사용한 웹 애플리케이션의 기초 골격을 구성해�
 - tRPC
 - Drizzle ORM
 - Bootstrap 5
-- Bun
+- Node.js
 
 ## 디렉토리 구조
 
