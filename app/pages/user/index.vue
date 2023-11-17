@@ -3,7 +3,9 @@
   <Loading v-if="pending" />
   <div v-else>
     <div class="row">
-      <div class="col text-end"></div>
+      <div class="col text-end">
+        <UserCreate @create="onCreate" />
+      </div>
     </div>
     <table class="table table-hover">
       <thead>
@@ -30,5 +32,9 @@
 
 <script lang="ts" setup>
 const { $client } = useNuxtApp()
-const { data, pending } = await $client.user.all.useQuery()
+const { data, pending, execute } = await $client.user.all.useQuery()
+
+async function onCreate() {
+  await execute()
+}
 </script>
