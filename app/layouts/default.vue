@@ -3,11 +3,11 @@
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">Scaffold</span>
       <ul class="navbar-nav">
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <NuxtLink :to="{ path: '/user' }" class="nav-link" :class="{ active: route.path === '/user' }"
             >사용자 관리</NuxtLink
           >
-        </li> -->
+        </li>
         <li class="nav-item">
           <NuxtLink :to="{ path: '/dept' }" class="nav-link" :class="{ active: route.path === '/dept' }"
             >부서 관리</NuxtLink

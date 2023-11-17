@@ -10,4 +10,4 @@ const poolConnection = mysql.createPool({
   password: dbPassword,
 })
 
-export const db = drizzle(poolConnection, { schema, mode: "default" })
+export const db = drizzle(poolConnection, { schema, mode: "default", logger: true })
